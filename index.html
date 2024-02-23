@@ -2,13 +2,17 @@
 <html style="font-size: 16px;" lang="en"><head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="artworks">
+    <meta name="keywords" content="custome model">
     <meta name="description" content="art work">
     <title>my Art</title>
     <link rel="stylesheet" href="style.css" media="screen">
 <link rel="stylesheet" href="my-Art.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="script.js" defer=""></script>
+    <link rel="stylesheet" href="contact/Contact-form-to-email.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Font Awesome for icons -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
     <meta name="generator" content="AkashdipMahapatra">
     <link rel="icon" href="images/fotor-202402236315.png">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
@@ -35,7 +39,7 @@
     <meta property="og:description" content="art work">
     <meta property="og:type" content="website">
   <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
-  <body data-home-page="my-Art.html" data-home-page-title="my Art" data-path-to-root="./" data-include-products="true" class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-image u-shading u-header" id="sec-295c" data-image-width="2716" data-image-height="2544"><div class="u-clearfix u-sheet u-sheet-1">
+  <body data-path-to-root="./" data-include-products="true" class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-image u-shading u-header" id="sec-295c" data-image-width="2716" data-image-height="2544"><div class="u-clearfix u-sheet u-sheet-1">
         <a href="https://www.facebook.com/profile.php?id=100094881184648&amp;mibextid=ZbWKwL" class="u-image u-logo u-image-1" data-image-width="1550" data-image-height="1550" title="art" target="_blank">
           <img src="images/fotor-202402236315.png?rand=2ff8" class="u-logo-image u-logo-image-1">
         </a>
@@ -446,6 +450,148 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
         </div>
       </div>
     </section>
+
+
+    <style>
+      /* Add custom styles for the back arrow and close icon */
+      body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-image: url('images/contact.jpg');
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* Adjust opacity as needed */
+}
+
+    
+      .container {
+        width: 100%;
+        max-width: 400px;
+        background-color: rgba(255, 255, 255, 0.5); /* Adding opacity to the background */
+        border-radius: 5px;
+        padding: 20px;
+        text-align: center;
+        position: relative; /* Make container a relative position */
+        margin: 20px auto; /* Center the container */
+        z-index: 1; /* Ensure the form container is above the fireflies */
+      }
+    
+      h2 {
+        margin-bottom: 20px;
+      }
+    
+      .back-arrow {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        cursor: pointer;
+      }
+    
+      .close-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+      }
+    
+      /* Add styles for the interaction buttons */
+      .interaction-button {
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+    
+      .interaction-button.email {
+        background-color: #3498db;
+        color: white;
+      }
+    
+      .interaction-button.whatsapp {
+        background-color: #2ecc71;
+        color: white;
+      }
+    
+      .interaction-button:hover {
+        background-color: #2980b9;
+      }
+    
+      
+    </style>
+    
+    
+    
+      <div class="container">
+        <i class="fas fa-arrow-left back-arrow" onclick="goBack()"></i>
+        <h2>Get in Touch</h2>
+        <form onsubmit="showPopup(); return false;">
+          <input type="text" id="name" placeholder="Name" name="name" required>
+          <input type="text" id="phone" placeholder="Phone" name="phone" required>
+          <input type="email" id="email" placeholder="Email" name="email" required>
+          <textarea name="text" id="message" rows="10" placeholder="Img number (1,2,3 ...) & Your Message"></textarea>
+          <button type="submit" class="btn">Submit</button>
+		<p>At that time Email not working - please use Wats-App</p>
+        </form>
+      </div>
+    
+      <script src="contact/Contact-form-to-email.js"></script>
+      <script src="contact/whatsapp.js"></script>
+      <script>
+        function showPopup() {
+          swal({
+            title: "Choose Contact Method",
+            text: "How would you like to be contacted?",
+            buttons: {
+              email: {
+                text: "Contact via Email",
+                value: "email",
+                className: "interaction-button email", // Add custom class for styling
+              },
+              whatsapp: {
+                text: "Contact via WhatsApp",
+                value: "whatsapp",
+                className: "interaction-button whatsapp", // Add custom class for styling
+              },
+            },
+            closeOnClickOutside: false,
+            content: {
+              element: "div",
+              attributes: {
+                innerHTML: '<i class="fas fa-times close-icon" onclick="closePopup()"></i>',
+              },
+            },
+          }).then((value) => {
+            if (value === "email") {
+              emailSend();
+            } else if (value === "whatsapp") {
+              sendToWhatsapp();
+            }
+          });
+        }
+    
+        function goBack() {
+          window.history.back(); // Go back to the previous page
+        }
+    
+        function closePopup() {
+          swal.close(); // Close the popup
+        }
+      </script>
+    
     
     
     
